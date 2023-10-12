@@ -40,7 +40,7 @@ library(ggplot2)
 #Is Age related to the willingness of donating organs? I stacked it based on gender.
 #I preferred a bar chart here to showcase the significant nominal comparision
 #in my variables.
-organ_donation %>% 
+Plot1 <- organ_donation %>% 
   group_by(Age, Are.you.willing.to.donate.organs., Gender) %>% 
   summarize(count = n()) %>% 
   ggplot(aes(Age, count, fill = Gender)) +
@@ -53,7 +53,7 @@ organ_donation %>%
 #I used a mosaic plot here, thanks to you, now I know which plot to go to
 #when I have 2 categorical variables. 
 #the mosaic plot is really efficient in that sense.
-mosaicplot(table(organ_donation$Education, organ_donation$Are.you.aware.of.the.process.to.become.an.organ.donor.),
+Plot2 <- mosaicplot(table(organ_donation$Education, organ_donation$Are.you.aware.of.the.process.to.become.an.organ.donor.),
            color = c("purple", "yellow"),  # Custom colors for Education levels
            main = "Mosaic Plot: Awareness of Organ Donation Process by Education",
            xlab = "Education",
@@ -62,7 +62,7 @@ mosaicplot(table(organ_donation$Education, organ_donation$Are.you.aware.of.the.p
 
 #Do people prefer to die at home than donating organs?
 #It is the question I wanted to answer
-ggplot(organ_donation, aes(x = I.prefer.to.die.at.home.and.therefore.choose.not.to.donate.organs.))+
+plot3 <- ggplot(organ_donation, aes(x = I.prefer.to.die.at.home.and.therefore.choose.not.to.donate.organs.))+
 geom_density() + 
 theme_minimal()
 ```
